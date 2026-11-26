@@ -1,0 +1,47 @@
+<header class="site-header">
+  <nav class="navbar glass-panel" aria-label="Main navigation">
+    <a class="brand" href="/" aria-label="Gemgala Agent home">
+      <span class="brand-mark"><img src="http://gemgalaagent.com/wp-content/uploads/2026/09/gemgala-icon.jpg"
+          alt="Gemgala Agent Logo" width="40" height="40"></span>
+      <span>Gemgala <span class="brand-agent">Agent</span></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false"
+      aria-controls="nav-links">
+      <span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+      <a href="#registration">Registration</a>
+      <a href="#earnings">Earnings</a>
+      <a href="#commission">Commission</a>
+      <a href="#faqs">FAQs</a>
+      <a class="button button-small button-glass" href="https://getblock.me/u/28002073" target="_blank">Become a Gemgala
+        Agent <span aria-hidden="true">↗</span></a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  (function () {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', String(!isOpen));
+        menuToggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+        navLinks.classList.toggle('is-open', !isOpen);
+        document.body.classList.toggle('menu-open', !isOpen);
+      });
+
+      navLinks.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.setAttribute('aria-label', 'Open navigation menu');
+          navLinks.classList.remove('is-open');
+          document.body.classList.remove('menu-open');
+        });
+      });
+    }
+  })();
+</script>
